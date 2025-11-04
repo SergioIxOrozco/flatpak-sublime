@@ -52,11 +52,12 @@ When installing Sublime Merge, it may not work as expected and you may get this 
 
 ```bash
 Result: failed with exit code 1
+Result: failed with exit code 128
 ```
 
-This is due to the sandbox nature of flatpak. To fix this, go to **Preferences** --> **Advanced**.
+This is due to the sandbox nature of flatpak. To fix this, go to **Preferences** → **Advanced**.
 
-There, configure Git Binary to point to the path _/usr/bin/git_. The path will be automatically translated to one that the application understands.
+In **Git Binary** and **SSH Path**, enter `/app/bin/git-host` and `/app/bin/ssh-host`. Then configure your authentication with Git via SSH.
 
 ## Additional notes
 
