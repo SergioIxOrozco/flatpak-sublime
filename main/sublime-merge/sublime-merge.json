@@ -22,6 +22,14 @@
         "bash -c 'echo \"exec flatpak-spawn --host /usr/bin/ssh \\\"\\$@\\\"\" >> /app/bin/ssh-host'",
         "chmod +x /app/bin/ssh-host",
 
+        "bash -c 'echo \"#!/usr/bin/env bash\" > /app/bin/subl'",
+        "bash -c 'echo \"exec flatpak-spawn --host flatpak run com.sublimetext.sublime_text \\\"\\$@\\\"\" >> /app/bin/subl'",
+        "chmod +x /app/bin/subl",
+
+        "bash -c 'echo \"#!/usr/bin/env bash\" > /app/bin/sublime_text'",
+        "bash -c 'echo \"exec flatpak-spawn --host flatpak run com.sublimetext.sublime_text \\\"\\$@\\\"\" >> /app/bin/sublime_text'",
+        "chmod +x /app/bin/sublime_text",
+
         "mkdir -p /app/share/icons/hicolor/16x16/apps /app/share/icons/hicolor/32x32/apps /app/share/icons/hicolor/48x48/apps /app/share/icons/hicolor/128x128/apps /app/share/icons/hicolor/256x256/apps",
         "install -Dm644 Icon/16x16/sublime-merge.png /app/share/icons/hicolor/16x16/apps/com.sublimemerge.sublime_merge.png",
         "install -Dm644 Icon/32x32/sublime-merge.png /app/share/icons/hicolor/32x32/apps/com.sublimemerge.sublime_merge.png",

@@ -57,7 +57,15 @@ Result: failed with exit code 128
 
 This is due to the sandbox nature of flatpak. To fix this, go to **Preferences** → **Advanced**.
 
-In **Git Binary** and **SSH Path**, enter `/app/bin/git-host` and `/app/bin/ssh-host`. Then configure your authentication with Git via SSH.
+In **Git Binary** and **SSH Path**, paste `/app/bin/git-host` and `/app/bin/ssh-host`. Then configure your authentication with Git via SSH.
+
+### Why don't Sublime Text and Sublime Merge detect each other?
+
+As mentioned above, they are isolated from each other, but you can configure them so that they work together.
+
+In Sublime Merge, go to **Preferences** → **Editor**, then in **Editor Path** paste `/app/bin/subl`.
+
+Now in Sublime Text, go to **Preferences** → **Settings** and paste the key `“sublime_merge_path”: “/app/bin/smerge”,`
 
 ## Additional notes
 
