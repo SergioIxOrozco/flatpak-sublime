@@ -1,0 +1,18 @@
+# Automatically generated files
+main/sublime-merge/.flatpak-builder
+main/sublime-merge/build-dir
+main/sublime-merge/repo
+
+main/sublime-text/.flatpak-builder
+main/sublime-text/build-dir
+main/sublime-text/repo
+
+.flatpak-builder
+
+# Sources
+
+main/sublime-merge/files/*
+main/sublime-text/files/*
+
+# Built packages
+target/*

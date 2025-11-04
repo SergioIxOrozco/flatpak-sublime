@@ -1,0 +1,46 @@
+{
+  "app-id": "com.sublimetext.sublime_text",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "24.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "sublime_text",
+  "modules": [
+    {
+      "name": "sublime-text",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/opt/sublime_text",
+        "cp -r * /app/opt/sublime_text/",
+        "mkdir -p /app/bin",
+        "ln -s /app/opt/sublime_text/sublime_text /app/bin/sublime_text",
+
+        "mkdir -p /app/share/icons/hicolor/16x16/apps /app/share/icons/hicolor/32x32/apps /app/share/icons/hicolor/48x48/apps /app/share/icons/hicolor/128x128/apps /app/share/icons/hicolor/256x256/apps",
+        "install -Dm644 Icon/16x16/sublime-text.png /app/share/icons/hicolor/16x16/apps/com.sublimetext.sublime_text.png",
+        "install -Dm644 Icon/32x32/sublime-text.png /app/share/icons/hicolor/32x32/apps/com.sublimetext.sublime_text.png",
+        "install -Dm644 Icon/48x48/sublime-text.png /app/share/icons/hicolor/48x48/apps/com.sublimetext.sublime_text.png",
+        "install -Dm644 Icon/128x128/sublime-text.png /app/share/icons/hicolor/128x128/apps/com.sublimetext.sublime_text.png",
+        "install -Dm644 Icon/256x256/sublime-text.png /app/share/icons/hicolor/256x256/apps/com.sublimetext.sublime_text.png",
+
+        "mkdir -p /app/share/applications",
+        "cat > com.sublimetext.sublime_text.desktop << 'EOF'\n[Desktop Entry]\nName=Sublime Text\nGenericName=Text Editor\nComment=Sophisticated text editor for code, markup and prose\nExec=sublime_text %F\nTryExec=sublime_text\nIcon=com.sublimetext.sublime_text\nTerminal=false\nType=Application\nCategories=Utility;TextEditor;Development;\nStartupNotify=true\nStartupWMClass=sublime_text\nMimeType=text/plain;application/x-shellscript;application/x-python;application/x-ruby;application/json;application/xml;text/x-csrc;text/x-c++src;text/x-java;text/x-go;text/x-markdown;text/x-changelog;text/x-makefile;\nKeywords=editor;code;programming;text;developer;IDE;\nEOF",
+        "install -Dm644 com.sublimetext.sublime_text.desktop /app/share/applications/com.sublimetext.sublime_text.desktop"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "files"
+        }
+      ]
+    }
+  ],
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--filesystem=home",
+    "--filesystem=/tmp"
+  ]
+}
+

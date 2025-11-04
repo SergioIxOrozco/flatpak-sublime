@@ -1,0 +1,46 @@
+{
+  "app-id": "com.sublimemerge.sublime_merge",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "24.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "sublime_merge",
+  "modules": [
+    {
+      "name": "sublime-merge",
+      "buildsystem": "simple",
+      "build-commands": [
+        "mkdir -p /app/opt/sublime_merge",
+        "cp -r * /app/opt/sublime_merge/",
+        "mkdir -p /app/bin",
+        "ln -s /app/opt/sublime_merge/sublime_merge /app/bin/sublime_merge",
+
+        "mkdir -p /app/share/icons/hicolor/16x16/apps /app/share/icons/hicolor/32x32/apps /app/share/icons/hicolor/48x48/apps /app/share/icons/hicolor/128x128/apps /app/share/icons/hicolor/256x256/apps",
+        "install -Dm644 Icon/16x16/sublime-merge.png /app/share/icons/hicolor/16x16/apps/com.sublimemerge.sublime_merge.png",
+        "install -Dm644 Icon/32x32/sublime-merge.png /app/share/icons/hicolor/32x32/apps/com.sublimemerge.sublime_merge.png",
+        "install -Dm644 Icon/48x48/sublime-merge.png /app/share/icons/hicolor/48x48/apps/com.sublimemerge.sublime_merge.png",
+        "install -Dm644 Icon/128x128/sublime-merge.png /app/share/icons/hicolor/128x128/apps/com.sublimemerge.sublime_merge.png",
+        "install -Dm644 Icon/256x256/sublime-merge.png /app/share/icons/hicolor/256x256/apps/com.sublimemerge.sublime_merge.png",
+
+        "mkdir -p /app/share/applications",
+        "cat > com.sublimemerge.sublime_merge.desktop << 'EOF'\n[Desktop Entry]\nName=Sublime Merge\nGenericName=Git Client\nComment=Git client, done Sublime\nExec=sublime_merge %F\nTryExec=sublime_merge\nIcon=com.sublimemerge.sublime_merge\nTerminal=false\nType=Application\nCategories=Development;RevisionControl;\nStartupNotify=true\nStartupWMClass=sublime_merge\nMimeType=text/plain;\nKeywords=git;version control;merge;repository;commit;\nEOF",
+        "install -Dm644 com.sublimemerge.sublime_merge.desktop /app/share/applications/com.sublimemerge.sublime_merge.desktop"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "files"
+        }
+      ]
+    }
+  ],
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--filesystem=home",
+    "--filesystem=/tmp"
+  ]
+}
+
