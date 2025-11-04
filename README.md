@@ -43,6 +43,21 @@ You can perform all possible actions on the project by running:
 
 You can also run **builder.sh** and **cleaner.sh** individually. They are designed to depend on **setup.sh**, but use them for convenience.
 
+
+## Common issues
+
+### Git not working in Sublime Merge?
+
+When installing Sublime Merge, it may not work as expected and you may get this in the console:
+
+```bash
+Result: failed with exit code 1
+```
+
+This is due to the sandbox nature of flatpak. To fix this, go to **Preferences** --> **Advanced**.
+
+There, configure Git Binary to point to the path _/usr/bin/git_. The path will be automatically translated to one that the application understands.
+
 ## Additional notes
 
 You can download the files manually from the official website by selecting the direct download of 64-bit .tar.xz. Once extracted, place all the contents in the **main/sublime-merge/files/** or **main/sublime-text/files/** folder and delete the _.desktop_ file you find.

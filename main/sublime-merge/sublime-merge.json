@@ -14,6 +14,10 @@
         "mkdir -p /app/bin",
         "ln -s /app/opt/sublime_merge/sublime_merge /app/bin/sublime_merge",
 
+        "bash -c 'echo \"#!/usr/bin/env bash\" > /app/bin/git-host'",
+        "bash -c 'echo \"exec flatpak-spawn --host git \\\"\\$@\\\"\" >> /app/bin/git-host'",
+        "chmod +x /app/bin/git-host",
+
         "mkdir -p /app/share/icons/hicolor/16x16/apps /app/share/icons/hicolor/32x32/apps /app/share/icons/hicolor/48x48/apps /app/share/icons/hicolor/128x128/apps /app/share/icons/hicolor/256x256/apps",
         "install -Dm644 Icon/16x16/sublime-merge.png /app/share/icons/hicolor/16x16/apps/com.sublimemerge.sublime_merge.png",
         "install -Dm644 Icon/32x32/sublime-merge.png /app/share/icons/hicolor/32x32/apps/com.sublimemerge.sublime_merge.png",
@@ -26,10 +30,7 @@
         "install -Dm644 com.sublimemerge.sublime_merge.desktop /app/share/applications/com.sublimemerge.sublime_merge.desktop"
       ],
       "sources": [
-        {
-          "type": "dir",
-          "path": "files"
-        }
+        { "type": "dir", "path": "files" }
       ]
     }
   ],
@@ -40,7 +41,8 @@
     "--socket=wayland",
     "--device=dri",
     "--filesystem=home",
-    "--filesystem=/tmp"
+    "--filesystem=/tmp",
+    "--talk-name=org.freedesktop.Flatpak",
+    "--socket=ssh-auth"
   ]
 }
-
